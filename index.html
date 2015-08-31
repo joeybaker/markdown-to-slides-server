@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Aug 31</title>
+		<style>
+			body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1, h2, h3 {
+	font-weight: 400;
+	margin-bottom: 0;
+}
+.remark-slide-content h1 { font-size: 3em; }
+.remark-slide-content h2 { font-size: 2em; }
+.remark-slide-content h3 { font-size: 1.6em; }
+.footnote {
+	position: absolute;
+	bottom: 3em;
+}
+li p { line-height: 1.25em; }
+.red { color: #fa0000; }
+.large { font-size: 2em; }
+a, a > code {
+	color: rgb(249, 38, 114);
+	text-decoration: none;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+.remark-code, .remark-inline-code { font-family: "Bitstream Vera Sans Mono", "Courier", monospace; }
+.remark-code-line-highlighted     { background-color: #373832; }
+.pull-left {
+	float: left;
+	width: 47%;
+}
+.pull-right {
+	float: right;
+	width: 47%;
+}
+.pull-right ~ p {
+	clear: both;
+}
+#slideshow .slide .content code {
+	font-size: 0.8em;
+}
+#slideshow .slide .content pre code {
+	font-size: 0.9em;
+	padding: 15px;
+}
+.main-title, .title {
+	background: #272822;
+	color: #777872;
+	text-shadow: 0 0 20px #333;
+}
+.title h1, .title h2, .main-title h1, .main-title h2 {
+	color: #f3f3f3;
+	line-height: 0.8em;
+}
+/* Custom */
+.remark-code {
+	display: block;
+	padding: 0.5em;
+}
+
+		</style>
+	</head>
+	<body>
+		<textarea id="source">
+class: center, middle, main-title
+
+# Aug 31
+Jessica&#39;s week!
+
+
+---
+## Agenda
+
+- State of Support
+- How to be a Team Lead
+- Housekeeping
+- Post-mortem
+- Kick off
+- Mindmeld
+
+
+---
+## State of support
+
+- a bunch of issues related to &quot;massage&quot; errors. (We should be getting better errors starting today)
+- flux throws false positives (e.g. 404)
+
+
+---
+## How to be a Team Lead
+
+- the Friday before you&#39;re on: meet with Scott and Dan to create issues for the milestone
+- lead the UI meeting on Monday to talk about that week&#39;s deadline
+- ensure PRs are cleared out daily
+- ensure bugsnag is cleared out daily
+- ensure the thurs deadline is met. ← This is the most important part
+- ensure the QA on Fri completes for *all* browsers
+- lead the post-mortem of the following Monday&#39;s meeting
+- ensure the milestone is *closed* (that means pressing the button)
+
+
+---
+class: center, middle, title
+
+## Housekeeping
+
+---
+### server logging
+Use with `req.log`
+
+
+---
+### Merging Props
+Merging props can now be done in the stateProps function
+
+```js
+const stateProps = (state, parentProps) => {
+    return {
+        category: find(state.categories, {id: parentProps.params.categoryId})
+    }
+}
+```
+*Do not return a plain object from merge props*. You have to merge in all the args, or you&#39;ll be removing props.
+
+
+---
+### State UX
+Every async action *must* have **error**, **loading**, and **success** UI state.
+
+There were a lot of forms that didn&#39;t have a loading state in supplier signup. This can lead to double submissions and doesn&#39;t let the user know what&#39;s happening. With flux this is *easy*.
+
+
+---
+### Naming Consistency
+
+- when you have a method responding to an event, name it `on*`
+- when you have a method that returns JSX, name in `render*`
+
+
+---
+## Post-Mortem
+**Things we tried**
+
+
+- wed deadline, thurs deadline, fri deadline
+- pairing
+- only rebasing once
+- have all state go through flux
+
+
+---
+## what went well
+
+- we did meet the 1 week deadline
+- Ted learned flux!
+- we immediately saw problems with the issues and api, and pro-actively fixed them
+- only rebasing once, at the EOW worked!
+
+
+---
+## what didn't go well
+
+- flux actions are starting to become messy, we should talk about namespacing
+- had to stay late on Fri b/c we were building components on thurs
+- creating the build step took longer than expected
+- we missed the wed deadline
+ - it sucks that mondays are half days.
+  - move Monday meetings to 10.
+ - all issues closed by EOD wed
+- we missed the thurs deadlines
+ - we didn&#39;t try to get through the whole flow before leaving
+ - noon deadline to have a flow you can walkthrough
+- data wasn&#39;t figured out, there were bugs throughout
+ - no css until the flow works
+- the lead is traffic control. Don&#39;t take issues without assigning yourself, don&#39;t solve problems without an issue or unless the lead tells you to. We stepped on each other&#39;s toes.
+
+**TODO**
+
+
+- all issues close by EOD wed
+- move the monday meeting to 10
+- no css until the flow works
+- noon deadline on thurs to be able to walkthrough the flow
+
+
+---
+### Switch Pairs
+Jessica &lt;-&gt; Chris
+
+Jon &lt;-&gt; Ted
+
+
+---
+## Editing pricing
+@Jessica
+
+
+---
+## Mindmeld
+
+- jessica on immutable data
+- next week: Chris on best practices?
+
+
+		</textarea>
+		<script src="http://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
+		<script>
+			var slideshow = remark.create();
+		</script>
+		<script></script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+var argv = require('yargs')
+  .usage('Parses a markdown file into HTML slides and starts a server with browser sync on.')
+  .option('markdown', {
+    alias: 'f'
+  , describe: 'the markdown file to parse into slides'
+  , demand: true
+  })
+  .option('title', {
+    alias: 't'
+  , describe: 'What to show in the <title> tag'
+  })
+  .option('port', {
+    alias: 'p'
+  , describe: 'port to run the server on. Will take this port and the port +1 so the liverloead server can work'
+  , default: 9000
+  })
+  .option('open', {
+    describe: 'Set to false to disable the page from opening in the browser on startup'
+  , default: true
+  , boolean: true
+  })
+  .example(`slides -f my-slides.md -t 'My Presentation'`)
+  .help('h')
+  .alias('h', 'help')
+  .epilog('License: Artistic 2.0')
+  .version(require('../package.json').version)
+  .showHelpOnFail(false, 'Specify --help for available options')
+  .argv
+
+require('../index.es5')(argv)
