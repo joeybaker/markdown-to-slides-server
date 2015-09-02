@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "1.0.0",
   "name": "markdown-to-slides-server",
   "description": "Parses a markdown file into HTML slides and starts a server with browser sync on.",
   "author": {
